@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+
+ <div class="container">   
+       <H1><%= fullname %></H1>
+     <ul>
+     <% hobbies.forEach(function(hobby){ %>
+     <li><%= hobby %></li>
+   <% }); %>
+ </ul>
+     <H3><%= bdate %></H3>
+
+<% include ../partials/footer %>
