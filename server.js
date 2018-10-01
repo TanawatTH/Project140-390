@@ -113,10 +113,11 @@ app.post('/products/update',function(req, res){
     var title = req.body.title;
     var price = req.body.price;
 
-    var sql = 'update products set title =  "'+ title + '", price = "' + price + '" where id =' + id;
+    var sql = `update products set title =  ${title}, price = ${price} where id = ${id}`;
 
-
-    res.send(sql);
+// db.none
+       console.log('UPDATE: ' + sql);
+    res.redirect('/products');
 
 
     
