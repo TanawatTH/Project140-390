@@ -148,7 +148,7 @@ app.get('/product_delete/:pid',function (req, res) {
     })
  });
 
- //add Product
+ //add  New Product
 app.get('/insert',function (req, res) {
     res.render('pages/insert'); 
 })
