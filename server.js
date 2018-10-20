@@ -139,15 +139,15 @@ app.get('/product_delete/:pid',function (req, res) {
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
-            res.render('pages/products',{products : data});
-            
+            res.redirect('/products');
+    
         })
         .catch(function(data){
                 console.log('ERROR:'+console.error);
                 
     })
  });
- 
+
  //add Product
 app.get('/insert',function (req, res) {
     res.render('pages/insert'); 
