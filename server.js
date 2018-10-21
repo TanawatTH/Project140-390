@@ -235,16 +235,16 @@ app.post('/users/update',function (req,res) {
 
 
     //report Products naja
-    app.get('/report_product', function (req, res) {
+    app.get('/product_report', function (req, res) {
         var id = req.param('id');
-        var sql = 'select* from products ORDER BY Price DESC limit 10';
+        var sql = 'select* from products ORDER BY Price DESC limit 50';
         if (id) {
             sql += ' where id =' + id;
         }
         db.any(sql)
             .then(function (data) {
                 console.log('DATA:' + data);
-                res.render('pages/report_product', { products: data })
+                res.render('pages/product_report', { products: data })
     
             })
             .catch(function (error) {
