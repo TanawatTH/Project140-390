@@ -1,6 +1,6 @@
 <% include ../partials/header %>
     <h1>Add Product</h1>
- <form action="/products/insert_product" method="post">
+ <form action="/product/insert_product" method="POST">
 <div class="form-group">
   <label for="id">ID</label>
   <input type="number"
@@ -25,7 +25,7 @@
 
     <div class="form-group">
         <label for="">Time</label>
-        <input type="text" class="form-control" value="<%= time %>" name="price" id="" aria-describedby="helpId" placeholder="" disabled>
+        <input type="text" class="form-control" value="<%= time %>" name="time" id="" aria-describedby="helpId" placeholder="" >
         <small id="helpId" class="form-text text-muted">Time</small>
       </div>
 

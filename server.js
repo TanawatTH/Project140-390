@@ -166,12 +166,12 @@ app.get('/user_delete/:pid',function (req, res) {
 
  //add  New Product
 
-app.post('/products/insert_product', function (req, res) {
+app.post('/product/insert_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `INSERT INTO products (id,title,price)
-    VALUES ('${id}', '${title}', '${price}')`;
+    var time =req.body.time;
+    var sql = `INSERT INTO products (id,title,price,created_at) VALUES ('${id}', '${title}', '${price}', '${time}')`;
     //db.none
     console.log('UPDATE:' + sql);
     db.any(sql)
