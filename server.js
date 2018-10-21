@@ -233,6 +233,27 @@ app.post('/users/update',function (req,res) {
     })
 
 
+
+    //report Products naja
+    app.get('/report_product', function (req, res) {
+        var id = req.param('id');
+        var sql = 'select* from products ORDER BY Price DESC limit 10';
+        if (id) {
+            sql += ' where id =' + id;
+        }
+        db.any(sql)
+            .then(function (data) {
+                console.log('DATA:' + data);
+                res.render('pages/report_product', { products: data })
+    
+            })
+            .catch(function (error) {
+                console.log('ERROR:' + error);
+            })
+    
+    });
+
+
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
