@@ -126,7 +126,7 @@ app.post('/products/update',function(req, res){
     
 });
 
- // delete
+ // delete Product naja
 app.get('/product_delete/:pid',function (req, res) {
     var id = req.params.pid;
     var sql = 'DELETE FROM products';
@@ -145,9 +145,28 @@ app.get('/product_delete/:pid',function (req, res) {
     })
  });
 
+ // delete User naja
+app.get('/user_delete/:pid',function (req, res) {
+    var id = req.params.pid;
+    var sql = 'DELETE FROM user';
+    if (id){
+            sql += ' where id ='+ id;
+    }
+    db.any(sql)
+        .then(function(data){
+            console.log('DATA:'+data);
+            res.redirect('/users');
+    
+        })
+        .catch(function(data){
+                console.log('ERROR:'+console.error);
+                
+    })
+ });
+
  //add  New Product
 
-app.post('/products/insert', function (req, res) {
+app.post('/products/insert_product', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -167,9 +186,9 @@ app.post('/products/insert', function (req, res) {
 });
 
 //timeeeeeee naja
-app.get('/insert', function (req, res) {
+app.get('/insert_product', function (req, res) {
     var time = moment().format();
-    res.render('pages/insert',{ time: time});
+    res.render('pages/insert_product',{ time: time});
 });
 
 
