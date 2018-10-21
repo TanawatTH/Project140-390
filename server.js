@@ -27,6 +27,7 @@ app.get('/about', function(req, res) {
   res.render('pages/about',{fullname : name,hobbies :hobbies,bdate:bdate});
   
 });
+
  //display all products
 app.get('/products/:pid', function(req, res) {
    var pid = req.params.pid;
@@ -66,20 +67,18 @@ app.get('/products', function(req, res) {
     })
 
 });
-//user
+//Display all  user
 app.get('/users/:id', function(req, res) {
   var id = req.params.id;
   var sql = 'select * from users';
   if(id){
       sql += ' where id ='+ id;
-
-
   }
 
  db.any(sql)
     .then(function(data){
         console.log('DATA:'+ data);
-        res.render('pages/users',{users : data})
+        res.render('pages/user_edit',{users : data[0]})
 
     })
     .catch(function(error){
@@ -87,17 +86,16 @@ app.get('/users/:id', function(req, res) {
 
     })
 });
+
 // user 
 app.get('/users', function(req, res) {
     var id = req.params.id;
     var sql = 'select * from users';
     if(id){
-        sql += ' where id ='+ id;
-  
-  
+        sql += ' where id ='+ id +' order by id ASC';
     }
   
-   db.any(sql)
+   db.any(sql +' order by id ASC')
       .then(function(data){
           console.log('DATA:'+ data);
           res.render('pages/users',{users : data})
@@ -109,7 +107,7 @@ app.get('/users', function(req, res) {
       })
   });
 
-//update data
+//update data product naja
 app.post('/products/update',function(req, res){
     var id = req.body.id;
     var title = req.body.title;
@@ -121,9 +119,7 @@ app.post('/products/update',function(req, res){
      db.none(sql);
        console.log('UPDATE: ' + sql);
     res.redirect('/products');
-     db.none(sql);
-       console.log('UPDATE: ' + sql);
-    res.redirect('/products');
+     
     
 
 
@@ -170,11 +166,26 @@ app.post('/products/insert', function (req, res) {
         })
 });
 
-//timeeeeeee
+//timeeeeeee naja
 app.get('/insert', function (req, res) {
     var time = moment().format();
     res.render('pages/insert',{ time: time});
 });
+
+
+//update data user naja
+
+app.post('/users/update',function (req,res) {
+    var id =req.body.id;
+    var email =req.body.email;
+    var password =req.body.password;
+    var sql=`update users set email='${email}',password='${password}' where id=${id}`;
+    // res.send(sql)
+    //db.none
+    db.query(sql);
+        res.redirect('/users')    
+    db.close();
+    })
 
 
 var port = process.env.PORT || 8080;

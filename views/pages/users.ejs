@@ -5,6 +5,9 @@
              <th>ID</th>
              <th>Email</th>
              <th>Password</th>
+
+             <th><a name="" id="" class="btn btn-success" href="/" role="button">Add New</a></td></th>
+
          </tr>
      </thead>
      <tbody>
@@ -13,6 +16,8 @@
              <td scope="row"><%= user.id %></td>
              <td><%= user.email %></td>
              <td><%= user.password %></td>
+             <td><a name="" id="" class="btn btn-dark" href="/users/<%= user.id %>" role="button">Edit</a>
+             <a name="" id="" class="btn btn-danger" href="/user_delete/<%= user.id %>" onclick="return confirm('Are you sure you want to delete?')" role="button">Delete</a></td>
          </tr>
          <% }); %>
              
