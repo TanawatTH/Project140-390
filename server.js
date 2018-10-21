@@ -255,7 +255,7 @@ app.post('/users/update',function (req,res) {
 
      //report user naja
      app.get('/user_report', function (req, res) {
-        db.any('select * from users ORDER BY  email ASC', )
+        db.any('select * from users ORDER BY  ID ASC limit 50', )
             .then(function (data) {
                 console.log('DATA' + data);
                 res.render('pages/user_report', { users: data })
