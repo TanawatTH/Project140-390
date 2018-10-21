@@ -1,6 +1,6 @@
 <% include ../partials/header %>
     <h1>Add user</h1>
- <form action="/users/insert_user" method="post">
+ <form action="/user/insert_user" method="post">
 <div class="form-group">
   <label for="id">ID</label>
   <input type="number"
@@ -9,25 +9,26 @@
 </div>
 
   <div class="form-group">
-    <label for="title">email</label>
+    <label for="email">email</label>
     <input type="text"
-      class="form-control" name="title" id="" aria-describedby="helpId" placeholder=""value="">
+      class="form-control" name="email" id="" aria-describedby="helpId" placeholder=""value="">
     <small id="helpId" class="form-text text-muted">Email</small>
   </div>
 
   <div class="form-group">
-    <label for="Price">password</label>
-    <input type="number"
-      class="form-control" name="price" id="" aria-describedby="helpId" placeholder=""value="">
+    <label for="password">password</label>
+    <input type="text"
+      class="form-control" name="password" id="" aria-describedby="helpId" placeholder=""value="">
     <small id="helpId" class="form-text text-muted">Password</small>
     </div>
     
 
     <div class="form-group">
         <label for="">Time</label>
-        <input type="text" class="form-control" value="<%= time %>" name="price" id="" aria-describedby="helpId" placeholder="" disabled>
+        <input type="text" class="form-control" value="<%= time %>" name="time" id="" aria-describedby="helpId" placeholder="" >
         <small id="helpId" class="form-text text-muted">Time</small>
       </div>
+
 
       
     <button type="submit" class="btn btn-success">Save</button>

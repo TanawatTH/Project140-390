@@ -148,7 +148,7 @@ app.get('/product_delete/:pid',function (req, res) {
  // delete User naja
 app.get('/user_delete/:pid',function (req, res) {
     var id = req.params.pid;
-    var sql = 'DELETE FROM user';
+    var sql = 'DELETE FROM users';
     if (id){
             sql += ' where id ='+ id;
     }
@@ -185,12 +185,38 @@ app.post('/product/insert_product', function (req, res) {
         })
 });
 
-//timeeeeeee naja
+//timeeeeeee product naja
 app.get('/insert_product', function (req, res) {
     var time = moment().format();
     res.render('pages/insert_product',{ time: time});
 });
 
+//add  New  user
+
+app.post('/user/insert_user', function (req, res) {
+    var id = req.body.id;
+    var email =req.body.email;
+    var password =req.body.password;
+    var time =req.body.time;
+    var sql = `INSERT INTO users (id,email,password,created_at) VALUES ('${id}', '${email}', '${password}', '${time}')`;
+    //db.none
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+        })
+
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
+
+//timeeeeeee product naja
+app.get('/insert_user', function (req, res) {
+    var time = moment().format();
+    res.render('pages/insert_user',{ time: time});
+});
 
 //update data user naja
 
