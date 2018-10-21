@@ -164,7 +164,7 @@ app.get('/user_delete/:pid',function (req, res) {
     })
  });
 
- //add  New Product
+ //add  New Product naja
 
 app.post('/product/insert_product', function (req, res) {
     var id = req.body.id;
@@ -245,6 +245,20 @@ app.post('/users/update',function (req,res) {
             .then(function (data) {
                 console.log('DATA:' + data);
                 res.render('pages/product_report', { products: data })
+    
+            })
+            .catch(function (error) {
+                console.log('ERROR:' + error);
+            })
+    
+    });
+
+     //report user naja
+     app.get('/user_report', function (req, res) {
+        db.any('select * from users ORDER BY  email ASC', )
+            .then(function (data) {
+                console.log('DATA' + data);
+                res.render('pages/user_report', { users: data })
     
             })
             .catch(function (error) {
