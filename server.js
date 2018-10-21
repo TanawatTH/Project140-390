@@ -145,7 +145,7 @@ app.get('/product_delete/:pid',function (req, res) {
     })
  });
 
- // delete User naja
+ // delete User najaa 
 app.get('/user_delete/:pid',function (req, res) {
     var id = req.params.pid;
     var sql = 'DELETE FROM users';
