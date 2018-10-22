@@ -1,6 +1,9 @@
 <% include ../partials/header %>
+<div class="jumbotron  "  >
 <H2> Search Here</H2>
  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+ <br>
+ <H2> Users</H2>
  <table class="table">
      <thead>
          <tr>
@@ -25,7 +28,7 @@
              
      </tbody>
  </table>
-
+</div>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
