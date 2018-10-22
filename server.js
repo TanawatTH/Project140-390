@@ -235,36 +235,34 @@ app.post('/users/update',function (req,res) {
 
 
     //report Products naja
-    app.get('/product_report', function (req, res) {
-        var id = req.param('id');
-        var sql = 'select* from products ORDER BY Price DESC limit 100';
-        if (id) {
-            sql += ' where id =' + id;
-        }
-        db.any(sql)
-            .then(function (data) {
-                console.log('DATA:' + data);
-                res.render('pages/product_report', { products: data })
-    
-            })
-            .catch(function (error) {
-                console.log('ERROR:' + error);
-            })
-    
+    app.get('/product_report', function(req, res) {
+        var sql ='SELECT products.id,products.title,products.price,products.tags,sum(purchase_items.quantity) as quantity,sum(purchase_items.price) as price FROM products,purchase_items where products.id=purchase_items.product_id group by products.id order by products.id ASC;select sum(quantity) as squantity,sum(price) as sprice from purchase_items';
+        db.multi(sql)
+        .then(function  (data) 
+        {
+            // console.log('DATA' + data);
+            res.render('pages/product_report', { product: data[0],sum: data[1]});
+        })
+        .catch(function (data) 
+        {
+            console.log('ERROR' + error);
+        })
     });
+    
 
-     //report user naja
-     app.get('/user_report', function (req, res) {
-        db.any('select * from users ORDER BY  ID ASC limit 100', )
-            .then(function (data) {
-                console.log('DATA' + data);
-                res.render('pages/user_report', { users: data })
-    
+    //report users naja
+    app.get('/user_report', function(req, res) {
+        var sql='select purchases.user_id,purchases.name,users.email,sum(purchase_items.price) as price from purchases,users,purchase_items where purchases.user_id=users.id group by purchases.user_id,purchases.name,users.email order by sum(purchase_items.price) desc LIMIT 30;'
+        db.any(sql)
+            .then(function (data) 
+            {
+                // console.log('DATA' + data);
+                res.render('pages/user_report', { user : data });
             })
-            .catch(function (error) {
-                console.log('ERROR:' + error);
+            .catch(function (data) 
+            {
+                console.log('ERROR' + error);
             })
-    
     });
 
 

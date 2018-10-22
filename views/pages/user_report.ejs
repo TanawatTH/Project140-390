@@ -4,20 +4,22 @@
  <h2>Users Report  </h2>
 <table class="table">
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>E-mail</th>
-            <th>Password</th>
+       <tr>
+            <th>Customers ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Total Sales</th>
         </tr>
     </thead>
-    <tbody id="myTable">
-     <% users.forEach(function(user){ %>
+    <tbody>
+    <% user.forEach(function(user) { %>
         <tr>
-            <td scope="row"><%= user.id %></td>
+            <td scope="row"><%= user.user_id %></td>
+            <td><%= user.name %></td>
             <td><%= user.email %></td>
-            <td><%= user.password %></td>
+            <td>$<%= user.price %></td>
         </tr>
-      <% }); %>
+        <% }); %>
     </tbody>
 </table>
 </div>

@@ -4,21 +4,27 @@
  <h2>Report Most expensive Products</h2>
 <table class="table">
     <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tittle</th>
-            <th>Price</th>
+        <tr >
+        <th>ITEM NAME</th>
+        <th>QUANTITY PURCHASED</th>
+        <th>AMOUNT</th>
         </tr>
     </thead>
-    <tbody id="myTable">
-     <% products.forEach(function(product){ %>
+    <tbody>
+    <% product.forEach(function(product) { %>
         <tr>
-            <td scope="row"><%= product.id %></td>
-            <td><%= product.title %></td>
-            <td><%= product.price %></td>
-            
+            <td scope="row"><%= product.title %></td>
+            <td><%= product.quantity %></td>
+            <td>$<%= product.price %></td>
         </tr>
-      <% }); %>
+        <% }); %>
+        <% sum.forEach(function(sum) { %>
+        <tr >
+            <td scope="row">Total</td>
+            <td id="quantity"><%= sum.squantity %></td>
+            <td id="price">$<%= sum.sprice %></td>
+        </tr>
+        <% }); %>
     </tbody>
 </table>
 </div>
