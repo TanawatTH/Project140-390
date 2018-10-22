@@ -252,7 +252,7 @@ app.post('/users/update',function (req,res) {
 
     //report users naja
     app.get('/user_report', function(req, res) {
-        var sql='select purchases.user_id,purchases.name,users.email,sum(purchase_items.price) as price from purchases,users,purchase_items where purchases.user_id=users.id group by purchases.user_id,purchases.name,users.email order by sum(purchase_items.price) desc LIMIT 30;'
+        var sql='select purchases.user_id,purchases.name,users.email,sum(purchase_items.price) as price from purchases,users,purchase_items where purchases.user_id=users.id and purchases.id=purchase_items.purchase_id group by purchases.user_id,purchases.name,users.email order by sum(purchase_items.price) desc LIMIT 60;'
         db.any(sql)
             .then(function (data) 
             {
