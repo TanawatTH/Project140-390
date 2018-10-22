@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/about', function(req, res) {
   var name = 'Tanawat Monpipat';
-  var hobbies =['Music','Movie','Programming']
+  var hobbies =['SE','5930213007']
   var bdate = '18/04/1997'
   res.render('pages/about',{fullname : name,hobbies :hobbies,bdate:bdate});
   
