@@ -23,7 +23,7 @@
              <td><%= product.price %></td> 
             
              <td><a name="" id="" class="btn btn-dark" href="/products/<%= product.id %>" role="button">Edit</a>
-             <a name="" id="" class="btn btn-danger" href="/product_delete/<%= product.id %>" onclick="return confirm('Are you sure you want to delete?')" role="button">Delete</a></td>
+            
          </tr>
          </tr>
          <% }); %>
@@ -40,7 +40,18 @@ $(document).ready(function(){
   });
 });
 </script>
-
+<script>
+        var selectedUser = 0;
+        function deleteUser(id){
+            console.log(id);
+            selectedUser = id;
+            $('#exampleModalCenter').modal('show')
+        }
+        function confirmDelete(){
+            console.log('confirm:'+selectedUser);
+            window.location.href = '/product_delete/'+selectedUser;
+        }        
+    </script>
 
 
 <% include ../partials/footer %>

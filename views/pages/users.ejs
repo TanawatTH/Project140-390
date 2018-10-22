@@ -22,7 +22,7 @@
              <td><%= user.email %></td>
              <td><%= user.password %></td>
              <td><a name="" id="" class="btn btn-dark" href="/users/<%= user.id %>" role="button">Edit</a>
-             <a name="" id="" class="btn btn-danger" href="/user_delete/<%= user.id %>" onclick="return confirm('Are you sure you want to delete?')" role="button">Delete</a></td>
+             
          </tr>
          <% }); %>
              
@@ -39,6 +39,18 @@ $(document).ready(function(){
   });
 });
 </script>
+<script>
+        var selectedUser = 0;
+        function deleteUser(id){
+            console.log(id);
+            selectedUser = id;
+            $('#exampleModalCenter').modal('show')
+        }
+        function confirmDelete(){
+            console.log('confirm:'+selectedUser);
+            window.location.href = '/user_delete/'+selectedUser;
+        }        
+    </script>
 
 
 <% include ../partials/footer %>
