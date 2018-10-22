@@ -237,7 +237,7 @@ app.post('/users/update',function (req,res) {
     //report Products naja
     app.get('/product_report', function (req, res) {
         var id = req.param('id');
-        var sql = 'select* from products ORDER BY Price DESC limit 50';
+        var sql = 'select* from products ORDER BY Price DESC limit 100';
         if (id) {
             sql += ' where id =' + id;
         }
@@ -255,7 +255,7 @@ app.post('/users/update',function (req,res) {
 
      //report user naja
      app.get('/user_report', function (req, res) {
-        db.any('select * from users ORDER BY  ID ASC limit 50', )
+        db.any('select * from users ORDER BY  ID ASC limit 100', )
             .then(function (data) {
                 console.log('DATA' + data);
                 res.render('pages/user_report', { users: data })
